@@ -2,6 +2,7 @@
 #define __TVECTOR_H__
 
 #include <iostream>
+#include "Exception.h"
 
 using namespace std;
 
@@ -18,8 +19,8 @@ public:
   TVector(int s, int si = 0);
   TVector(const TVector &v); // конструктор копирования
   ~TVector();
-  int GetSize() { return size; } // размер вектора
-  int GetStartIndex() { return startIndex; } // индекс первого элемента
+  int GetSize() { return Size; } // размер вектора
+  int GetStartIndex() { return StartIndex; } // индекс первого элемента
 
   ValType & operator[] (int pos); // доступ
   bool operator==(const TVector &v); // сравнение
@@ -102,7 +103,7 @@ bool TVector<ValType>::operator==(const TVector & v)
 }
 
 template <class ValType> // сравнение
-bool TVector<ValType>::operator!=(const TVector &v) const
+bool TVector<ValType>::operator!=(const TVector &v) 
 {
   return !(*this == v);
 }
@@ -127,7 +128,7 @@ TVector<ValType> & TVector<ValType>::operator=(const TVector &v)
 template<class ValType> //прибавить скаляр
 TVector<ValType> TVector<ValType>::operator+(const ValType & val)
 {
-  TVector<ValType> res(Size, StartIndex);
+  TVector<ValType> tmp(Size, StartIndex);
   tmp = *this;
   for (int i = 0; i < Size; i++)
     tmp.pVector[i] += val;
@@ -136,7 +137,7 @@ TVector<ValType> TVector<ValType>::operator+(const ValType & val)
 template<class ValType>//вычесть скаляр
 TVector<ValType> TVector<ValType>::operator-(const ValType & val)
 {
-  TVector<ValType> res(Size, StartIndex);
+  TVector<ValType> tmp(Size, StartIndex);
   tmp = *this;
   for (int i = 0; i < Size; i++)
     tmp.pVector[i] -= val;

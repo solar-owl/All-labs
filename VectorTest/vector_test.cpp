@@ -1,15 +1,10 @@
-#include "gtest.h"
+#include <gtest.h>
 #include "TVector.h"
 #include <iostream>
 
 TEST(TVector, can_create_vector_with_positive_length)
 {
   ASSERT_NO_THROW(TVector<int> v(5));
-}
-
-TEST(TVector, cant_create_too_large_vector)
-{
-  ASSERT_ANY_THROW(TVector<int> v(MAX_VECTOR_SIZE + 1));
 }
 
 TEST(TVector, throws_when_create_vector_with_negative_length)
@@ -33,7 +28,7 @@ TEST(TVector, copied_vector_is_equal_to_source_one)
 {
   TVector<int> v(10);
   TVector<int> v1(v);
-  EXPECT_EQ(v, v1);
+  EXPECT_EQ(true,v== v1);
 }
 
 TEST(TVector, copied_vector_has_its_own_memory)
@@ -214,4 +209,3 @@ TEST(TVector, cant_subtract_vectors_with_not_equal_start_index)
   TVector<int> v1(10, 2);
   ASSERT_ANY_THROW(v - v1);
 }
-\
