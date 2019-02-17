@@ -34,6 +34,7 @@ public:
 template<class ValType>
 TMatrix<ValType>::TMatrix(int s) : TVector<TVector<ValType> >(s)
 {
+  if (s <= 0)  throw - 1;
   for (int i = 0; i < s; i++)
     this->pVector[i] = TVector<ValType>(s - i, i);
 }

@@ -23,7 +23,7 @@ TEST(TMatrix, copied_matrix_is_equal_to_source_one)
 {
   TMatrix<int> m(5);
   TMatrix<int> m1(m);
-  EXPECT_EQ(m, m1);
+  EXPECT_EQ(m==m1, true);
 
 }
 
@@ -145,10 +145,12 @@ TEST(TMatrix, operator_not_equal_return_true_with_not_equal_matrix)
   TMatrix<int> m1(10);
   EXPECT_EQ(true, m1 != m);
 }
+
 TEST(TMatrix, cant_create_matrix_with_size_0)
 {
   ASSERT_ANY_THROW(TMatrix<int> m(0));
 }
+
 TEST(TMatrix, compare_different_matrices_return_false)
 {
   TMatrix<int> m(5);
