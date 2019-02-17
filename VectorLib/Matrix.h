@@ -24,7 +24,7 @@ public:
 
   friend ostream & operator<<(ostream &out, const TMatrix &mt)
   {
-    for (int i = 0; i < mt.size; i++)
+    for (int i = 0; i < mt.Size; i++)
       out << mt.pVector[i] << endl;
     return out;
   }
