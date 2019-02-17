@@ -8,6 +8,7 @@ before_script:
 script:
   - cmake ../All-labs
   - make -j
-
+  - ./Vector/Vector
+  - ./VectorTest/VectorTest
 notifications:
   email: false
