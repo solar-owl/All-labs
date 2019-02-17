@@ -3,9 +3,9 @@
 set(PROJECT_NAME All-labs) #Создаем обычную локальную переменную с именем проекта
 project(${PROJECT_NAME}) # Название проекта
 
-set(vector vector) #Переменная с именем библиотеки
-set(vectorlib vectorlib) #Переменная с именем библиотеки
-set(vectortest vectortest) #Переменная с именем библиотеки
+set(Vector Vector) #Переменная с именем библиотеки
+set(VectorLib VectorLib) #Переменная с именем библиотеки
+set(VectorTest VectorTest) #Переменная с именем библиотеки
 
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configs" FORCE) #Создается переменная CMAKE_CONFIGURATION_TYPES со значением "Debug;Release" и меткой/разделом Configs, переменная сохраниется в специальном файле доступном из всех файлов,
 if(NOT CMAKE_BUILD_TYPE) # проверка имеющихся у компилятора вариантов сборки
@@ -14,9 +14,9 @@ endif()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/vectorlib ${CMAKE_CURRENT_SOURCE_DIR}/gtest)
 
-add_subdirectory(vector)
-add_subdirectory(vectorlib)
-add_subdirectory(vectortest)
+add_subdirectory(Vector)
+add_subdirectory(VectorLib)
+add_subdirectory(VectorTest)
 add_subdirectory(gtest)
 
 #file(GLOB hdrs "*.h*") #Добавляем в переменную hdrs все файлы с расширением .h
