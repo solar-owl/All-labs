@@ -6,16 +6,8 @@ before_script:
   - mkdir ../build
   - cd ../build
 script:
-  - cmake ../381706-2_Kriukov_lab
+  - cmake ../All-labs
   - make -j
-  - ./vectortest/vectortest
-  - ./matrixtest/matrixtest
-  - ./stacktest/stacktest
-  - ./multistacktest/multistacktest
-  - ./queuetest/queuetest
-  - ./datlisttest/datlisttest
-  - ./liststacktest/liststacktest
-  - ./arrlisttest/arrlisttest
-  - ./polinomtest/polinomtest
+  - ./VectorTest/VectorTest
 notifications:
   email: false
