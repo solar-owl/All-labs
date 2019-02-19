@@ -7,11 +7,11 @@
 using namespace std;
 
 
-template <class ValType>
+template <class T>
 class TVector
 {
 protected:
-  ValType * pVector;
+  T * pVector;
   int Size; // размер вектора
   int StartIndex; // индекс первого элемента вектора
 public:
@@ -22,26 +22,26 @@ public:
   int GetSize() { return Size; } // размер вектора
   int GetStartIndex() { return StartIndex; } // индекс первого элемента
 
-  ValType & operator[] (int pos); // доступ
+  T & operator[] (int pos); // доступ
   bool operator==(const TVector &v); // сравнение
   bool operator!=(const TVector &v); // сравнение
   TVector & operator= (const TVector &v); // присваивание
   // скалярные операции
-  TVector operator+ (const ValType &val); // прибавить скаляр
-  TVector operator- (const ValType &val);// вычесть скаляр
-  TVector operator* (const ValType &val);// умножить на скаляр
+  TVector operator+ (const T &val); // прибавить скаляр
+  TVector operator- (const T &val);// вычесть скаляр
+  TVector operator* (const T &val);// умножить на скаляр
   //векторные операции
   TVector operator+ (const TVector &v); // сложение
   TVector operator- (const TVector &v); // вычитание
-  ValType operator* (const TVector &v); // скалярное произведение
+  T operator* (const TVector &v); // скалярное произведение
   //ввод-вывод 
-  friend istream & operator>>(istream &in, TVector<ValType> &v)
+  friend istream & operator>>(istream &in, TVector<T> &v)
   {
     for (int i = 0; i < v.Size; i++)
       in >> v.pVector[i];
     return in;
   }
-  friend ostream & operator<<(ostream &out,  TVector<ValType> &v)
+  friend ostream & operator<<(ostream &out,  TVector<T> &v)
   {
     for (int i = 0; i < v.Size; i++)
       out << v.pVector[i] << ' ';
@@ -49,52 +49,52 @@ public:
   }
 };
 
-template<class ValType>
-TVector<ValType>::TVector()
+template<class T>
+TVector<T>::TVector()
 {
   pVector = NULL;
   Size = 0;
   StartIndex = 0;
 }
 
-template<class ValType>
-TVector<ValType>::TVector(int s, int si)
+template<class T>
+TVector<T>::TVector(int s, int si)
 {
   if ((s < 0) || (si < 0)) throw - 1;
   Size = s;
-  pVector = new ValType[Size];
+  pVector = new T[Size];
   for (int i = 0; i < Size; i++)
     pVector[i] = 0;
   StartIndex = si;
 }
 
-template<class ValType> //конструктор копирования
-TVector<ValType>::TVector(const TVector & v)
+template<class T> //конструктор копирования
+TVector<T>::TVector(const TVector & v)
 {
   Size = v.Size;
   StartIndex = v.StartIndex;
-  pVector = new ValType[Size];
+  pVector = new T[Size];
   for (int i = 0; i < Size; i++)
     pVector[i] = v.pVector[i];
 }
 
 
-template<class ValType>
-TVector<ValType>::~TVector()
+template<class T>
+TVector<T>::~TVector()
 {
   delete[]pVector;
 }
 
 
-template<class ValType>//доступ
-ValType & TVector<ValType>::operator[](int pos)
+template<class T>//доступ
+T & TVector<T>::operator[](int pos)
 {
   if ((pos - StartIndex < 0) || (pos - StartIndex > Size)) throw - 1;
   return pVector[pos - StartIndex];
 }
 
-template<class ValType>//сравнение
-bool TVector<ValType>::operator==(const TVector & v)
+template<class T>//сравнение
+bool TVector<T>::operator==(const TVector & v)
 {
   if ((Size != v.Size) || (StartIndex != v.StartIndex)) return false;
   for (int i = 0; i < Size; i++)
@@ -102,21 +102,21 @@ bool TVector<ValType>::operator==(const TVector & v)
   return true;
 }
 
-template <class ValType> // сравнение
-bool TVector<ValType>::operator!=(const TVector &v) 
+template <class T> // сравнение
+bool TVector<T>::operator!=(const TVector &v) 
 {
   return !(*this == v);
 }
 
-template<class ValType> //присваивание
-TVector<ValType> & TVector<ValType>::operator=(const TVector &v)
+template<class T> //присваивание
+TVector<T> & TVector<T>::operator=(const TVector &v)
 {
   if (this != &v)
   {
     delete[] pVector;
     Size = v.Size;
     StartIndex = v.StartIndex;
-    pVector = new ValType[Size];
+    pVector = new T[Size];
     for (int i = 0; i < Size; i++)
     {
       pVector[i] = v.pVector[i];
@@ -125,60 +125,60 @@ TVector<ValType> & TVector<ValType>::operator=(const TVector &v)
   return *this;
 }
 
-template<class ValType> //прибавить скаляр
-TVector<ValType> TVector<ValType>::operator+(const ValType & val)
+template<class T> //прибавить скаляр
+TVector<T> TVector<T>::operator+(const T & val)
 {
-  TVector<ValType> tmp(Size, StartIndex);
+  TVector<T> tmp(Size, StartIndex);
   tmp = *this;
   for (int i = 0; i < Size; i++)
     tmp.pVector[i] += val;
   return tmp;
 }
-template<class ValType>//вычесть скаляр
-TVector<ValType> TVector<ValType>::operator-(const ValType & val)
+template<class T>//вычесть скаляр
+TVector<T> TVector<T>::operator-(const T & val)
 {
-  TVector<ValType> tmp(Size, StartIndex);
+  TVector<T> tmp(Size, StartIndex);
   tmp = *this;
   for (int i = 0; i < Size; i++)
     tmp.pVector[i] -= val;
   return tmp;
 }
 
-template <class ValType> // умножить на скаляр
-TVector<ValType> TVector<ValType>::operator*(const ValType &val)
+template <class T> // умножить на скаляр
+TVector<T> TVector<T>::operator*(const T &val)
 {
-  TVector<ValType> tmp(Size, StartIndex);
+  TVector<T> tmp(Size, StartIndex);
   tmp = *this;
   for (int i = 0; i < Size; i++)
     tmp.pVector[i] *= val;
   return tmp;
 }
 
-template<class ValType>//сложение
-TVector<ValType> TVector<ValType>::operator+(const TVector & v)
+template<class T>//сложение
+TVector<T> TVector<T>::operator+(const TVector & v)
 {
   if ((Size != v.Size) || (StartIndex != v.StartIndex)) throw - 1;
-  TVector<ValType> tmp(Size, StartIndex);
+  TVector<T> tmp(Size, StartIndex);
   tmp = *this;
   for (int i = 0; i < Size; i++)
     tmp.pVector[i] += v.pVector[i];
   return tmp;
 }
-template<class ValType>//вычитание
-TVector<ValType> TVector<ValType>::operator-(const TVector & v)
+template<class T>//вычитание
+TVector<T> TVector<T>::operator-(const TVector & v)
 {
   if((Size != v.Size) || (StartIndex != v.StartIndex)) throw - 1;
-  TVector<ValType> tmp(Size, StartIndex);
+  TVector<T> tmp(Size, StartIndex);
   tmp = *this;
   for (int i = 0; i < Size; i++)
     tmp.pVector[i] -= v.pVector[i];
   return tmp;
 }
 
-template<class ValType> //скалярное произведение
-ValType TVector<ValType>::operator*(const TVector & v)
+template<class T> //скалярное произведение
+T TVector<T>::operator*(const TVector & v)
 {
-  ValType tmp = 0;
+  T tmp = 0;
   if (Size != v.Size) throw - 1;
   for (int i = 0; i < Size; i++)
     tmp += pVector[i] * v.pVector[i];
