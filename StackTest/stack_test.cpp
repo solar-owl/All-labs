@@ -1,211 +1,63 @@
 #include <gtest.h>
-#include "TVector.h"
 #include <iostream>
+#include "Stack.h"
 
-TEST(TVector, can_create_vector_with_positive_length)
+TEST(Stack, throws_when_create_stack_with_negative_size)
 {
-  ASSERT_NO_THROW(TVector<int> v(5));
-}
-
-TEST(TVector, throws_when_create_vector_with_negative_length)
-{
-  ASSERT_ANY_THROW(TVector<int> v(-5));
+  ASSERT_ANY_THROW(TStack <int> S(-1));
 }
 
-TEST(TVector, throws_when_create_vector_with_negative_startindex)
+TEST(Stack, can_put_and_get)
 {
-  ASSERT_ANY_THROW(TVector<int> v(5, -2));
+  TStack <int> S(1);
+  S.Put(3);
+  ASSERT_EQ(3, S.Get());
 }
 
-TEST(TVector, can_create_copied_vector)
+TEST(Stack, can_use_full_check_false)
 {
-  TVector<int> v(10);
-
-  ASSERT_NO_THROW(TVector<int> v1(v));
+  TStack <int> S(1);
+  ASSERT_FALSE(S.IsFull());
 }
 
-TEST(TVector, copied_vector_is_equal_to_source_one)
+TEST(Stack, can_use_full_check_true)
 {
-  TVector<int> v(10);
-  TVector<int> v1(v);
-  EXPECT_EQ(true,v== v1);
+  TStack <int> S(1);
+  S.Put(5);
+  ASSERT_TRUE(S.IsFull());
 }
 
-TEST(TVector, copied_vector_has_its_own_memory)
+TEST(Stack, can_use_empty_check_false)
 {
-  TVector<int> v(10);
-  TVector<int> v1(v);
-  EXPECT_NE(&v, &v1);
+  TStack <int> S(1);
+  S.Put(5);
+  ASSERT_FALSE(S.IsEmpty());
 }
 
-TEST(TVector, can_get_size)
+TEST(Stack, can_use_empty_check_true)
 {
-  TVector<int> v(4);
-
-  EXPECT_EQ(4, v.GetSize());
+  TStack <int> S(1);
+  ASSERT_TRUE(S.IsEmpty());
 }
 
-TEST(TVector, can_get_start_index)
+TEST(Stack, throws_when_in_full_stack_put_elem)
 {
-  TVector<int> v(4, 2);
-
-  EXPECT_EQ(2, v.GetStartIndex());
+  TStack <int> S(1);
+  S.Put(2);
+  ASSERT_ANY_THROW(S.Put(5));
 }
 
-TEST(TVector, can_set_and_get_element)
+TEST(Stack, throws_when_from_empty_stack_get_elem)
 {
-  TVector<int> v(4);
-  v[0] = 4;
-  EXPECT_EQ(4, v[0]);
+  TStack <int> S(1);
+  ASSERT_ANY_THROW(S.Get());
 }
 
-TEST(TVector, throws_when_set_element_with_negative_index)
+TEST(Stack, Poryadok_vivoda)
 {
-  TVector<int> v(10);
-  ASSERT_ANY_THROW(v[-1] = 5);
-}
-
-TEST(TVector, throws_when_set_element_with_too_large_index)
-{
-  TVector<int> v(10);
-  ASSERT_ANY_THROW(v[11] = 5);
-}
-
-TEST(TVector, can_assign_vector_to_itself)
-{
-  TVector<int> v(10);
-  ASSERT_NO_THROW(v = v);
-}
-
-TEST(TVector, can_assign_vectors_of_equal_size)
-{
-  TVector<int> v(10);
-  TVector<int> v1(10);
-  ASSERT_NO_THROW(v = v1);
-}
-
-TEST(TVector, assign_operator_change_vector_size)
-{
-  TVector<int> v(10);
-  TVector<int> v1(15);
-  v1 = v;
-  EXPECT_NE(15, v1.GetSize());
-}
-
-TEST(TVector, can_assign_vectors_of_different_size)
-{
-  TVector<int> v(10);
-  TVector<int> v1(15);
-  ASSERT_NO_THROW(v = v1);
-}
-
-TEST(TVector, compare_equal_vectors_return_true)
-{
-  TVector<int> v(10);
-  TVector<int> v1(10);
-  EXPECT_EQ(true, v == v1);
-}
-
-TEST(TVector, compare_vector_with_itself_return_true)
-{
-  TVector<int> v(10);
-  EXPECT_EQ(true, v == v);
-}
-
-TEST(TVector, vectors_with_different_size_are_not_equal)
-{
-  TVector<int> v(10);
-  TVector<int> v1(15);
-  EXPECT_EQ(false, v == v1);
-}
-
-TEST(TVector, can_add_scalar_to_vector)
-{
-  TVector<int> v(10);
-  ASSERT_NO_THROW(v + 5);
-}
-
-TEST(TVector, can_subtract_scalar_from_vector)
-{
-  TVector<int> v(10);
-  ASSERT_NO_THROW(v - 5);
-}
-
-TEST(TVector, can_multiply_scalar_by_vector)
-{
-  TVector<int> v(10);
-  ASSERT_NO_THROW(v * 5);
-}
-
-TEST(TVector, can_add_vectors_with_equal_size)
-{
-  TVector<int> v(10);
-  TVector<int> v1(10);
-  ASSERT_NO_THROW(v + v1);
-}
-
-TEST(TVector, cant_add_vectors_with_not_equal_size)
-{
-  TVector<int> v(10);
-  TVector<int> v1(15);
-  ASSERT_ANY_THROW(v + v1);
-}
-
-TEST(TVector, can_subtract_vectors_with_equal_size)
-{
-  TVector<int> v(10);
-  TVector<int> v1(10);
-  ASSERT_NO_THROW(v - v1);
-}
-
-TEST(TVector, cant_subtract_vectors_with_not_equal_size)
-{
-  TVector<int> v(10);
-  TVector<int> v1(15);
-  ASSERT_ANY_THROW(v - v1);
-}
-
-TEST(TVector, can_multiply_vectors_with_equal_size)
-{
-  TVector<int> v(10);
-  TVector<int> v1(10);
-  ASSERT_NO_THROW(v * v1);
-}
-
-TEST(TVector, cant_multiply_vectors_with_not_equal_size)
-{
-  TVector<int> v(10);
-  TVector<int> v1(15);
-  ASSERT_ANY_THROW(v * v1);
-}
-TEST(TVector, cant_add_vectors_with_not_equal_start_index)
-{
-  TVector<int> v(10, 1);
-  TVector<int> v1(10, 2);
-  ASSERT_ANY_THROW(v + v1);
-}
-TEST(TVector, cant_get_value_less_start_index)
-{
-  TVector<int> v(10, 3);
-  ASSERT_ANY_THROW(v[1]);
-}
-TEST(TVector, vectors_with_different_start_index_are_not_equal)
-{
-  TVector<int> v(10, 3);
-  TVector<int> v1(10, 2);
-  EXPECT_EQ(false, v == v1);
-}
-TEST(TVector, compare_different_vectors_return_false)
-{
-  TVector<int> v(5);
-  TVector<int> v1(5);
-  v[4] = 10;
-  v1[4] = 15;
-  EXPECT_EQ(false, v == v1);
-}
-TEST(TVector, cant_subtract_vectors_with_not_equal_start_index)
-{
-  TVector<int> v(10, 1);
-  TVector<int> v1(10, 2);
-  ASSERT_ANY_THROW(v - v1);
+  TStack <int> S(3);
+  S.Put(1), S.Put(2), S.Put(3);
+  ASSERT_EQ(S.Get(), 3);
+  ASSERT_EQ(S.Get(), 2);
+  ASSERT_EQ(S.Get(), 1);
 }

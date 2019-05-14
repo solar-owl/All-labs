@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9BC0472D-AA5A-30E0-94BD-E419EDD4B1C9}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Admin\Desktop\LABS\All-labs\VectorLib;C:\Users\Admin\Desktop\LABS\All-labs\gtest;C:\Users\Admin\Desktop\LABS\All-labs\ExceptionLib;C:\Users\Admin\Desktop\LABS\All-labs\StackLib;C:\Users\Admin\Desktop\LABS\All-labs\QueueLib;C:\Users\Admin\Desktop\LABS\All-labs\ListLib;C:\Users\Admin\Desktop\LABS\All-labs\ArrListLib;C:\Users\Admin\Desktop\LABS\All-labs\MultiStackLib;C:\Users\Admin\Desktop\LABS\All-labs\PolinomLib;C:\Users\Admin\Desktop\LABS\All-labs\StackListLib;C:\Users\Admin\Desktop\LABS\All-labs\PolishLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Admin\Desktop\LABS\All-labs\VectorLib;C:\Users\Admin\Desktop\LABS\All-labs\gtest;C:\Users\Admin\Desktop\LABS\All-labs\ExceptionLib;C:\Users\Admin\Desktop\LABS\All-labs\StackLib;C:\Users\Admin\Desktop\LABS\All-labs\QueueLib;C:\Users\Admin\Desktop\LABS\All-labs\ListLib;C:\Users\Admin\Desktop\LABS\All-labs\ArrListLib;C:\Users\Admin\Desktop\LABS\All-labs\MultiStackLib;C:\Users\Admin\Desktop\LABS\All-labs\PolinomLib;C:\Users\Admin\Desktop\LABS\All-labs\StackListLib;C:\Users\Admin\Desktop\LABS\All-labs\PolishLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Admin\Desktop\LABS\All-labs\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/Admin/Desktop/LABS/All-labs/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Admin/Desktop/LABS/All-labs -BC:/Users/Admin/Desktop/LABS/All-labs --check-stamp-file C:/Users/Admin/Desktop/LABS/All-labs/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/Admin/Desktop/LABS/All-labs/CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\WindowsPaths.cmake;C:\Users\Admin\Desktop\LABS\All-labs\CMakeFiles\3.13.0-rc1\CMakeCCompiler.cmake;C:\Users\Admin\Desktop\LABS\All-labs\CMakeFiles\3.13.0-rc1\CMakeCXXCompiler.cmake;C:\Users\Admin\Desktop\LABS\All-labs\CMakeFiles\3.13.0-rc1\CMakeRCCompiler.cmake;C:\Users\Admin\Desktop\LABS\All-labs\CMakeFiles\3.13.0-rc1\CMakeSystem.cmake;C:\Users\Admin\Desktop\LABS\All-labs\CMakeLists.txt;C:\Users\Admin\Desktop\LABS\All-labs\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Admin\Desktop\LABS\All-labs\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/Admin/Desktop/LABS/All-labs/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Admin/Desktop/LABS/All-labs -BC:/Users/Admin/Desktop/LABS/All-labs --check-stamp-file C:/Users/Admin/Desktop/LABS/All-labs/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/Admin/Desktop/LABS/All-labs/CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\WindowsPaths.cmake;C:\Users\Admin\Desktop\LABS\All-labs\CMakeFiles\3.13.0-rc1\CMakeCCompiler.cmake;C:\Users\Admin\Desktop\LABS\All-labs\CMakeFiles\3.13.0-rc1\CMakeCXXCompiler.cmake;C:\Users\Admin\Desktop\LABS\All-labs\CMakeFiles\3.13.0-rc1\CMakeRCCompiler.cmake;C:\Users\Admin\Desktop\LABS\All-labs\CMakeFiles\3.13.0-rc1\CMakeSystem.cmake;C:\Users\Admin\Desktop\LABS\All-labs\CMakeLists.txt;C:\Users\Admin\Desktop\LABS\All-labs\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\Admin\Desktop\LABS\All-labs\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\ZERO_CHECK.vcxproj">
+      <Project>{280C6349-7305-339A-B247-78035E8D0FC6}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\ArrList\ArrList.vcxproj">
+      <Project>{BE4C17D8-E7D5-30EC-A0E9-2E8E82F962CB}</Project>
+      <Name>ArrList</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\ArrListLib\ArrListLib.vcxproj">
+      <Project>{AC9D7BB6-EC3D-340C-8F8B-0DCC0BE9AC60}</Project>
+      <Name>ArrListLib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\ArrListTest\ArrListTest.vcxproj">
+      <Project>{094DA5BE-B883-370F-B949-05F762756CA4}</Project>
+      <Name>ArrListTest</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\ExceptionLib\ExceptionLib.vcxproj">
+      <Project>{5B9F91BD-C713-391E-A3A0-EA9B3AFC35E1}</Project>
+      <Name>ExceptionLib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\List\List.vcxproj">
+      <Project>{E22AA17C-7A8E-397E-AB07-298578855206}</Project>
+      <Name>List</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\ListLib\ListLib.vcxproj">
+      <Project>{4A89581E-A967-3FDD-86AF-6CF392A516A7}</Project>
+      <Name>ListLib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\ListTest\ListTest.vcxproj">
+      <Project>{5785351D-9991-3FBA-8B00-4988ACF93CEF}</Project>
+      <Name>ListTest</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\MultiStack\MultiStack.vcxproj">
+      <Project>{D6B45996-55CB-32CA-A8F5-63A869ECAC80}</Project>
+      <Name>MultiStack</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\MultiStackLib\MultiStackLib.vcxproj">
+      <Project>{05652AC4-806D-3D79-A6A3-C36630E653AB}</Project>
+      <Name>MultiStackLib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\MultiStackTest\MultiStackTest.vcxproj">
+      <Project>{8D7285BA-7F11-39A1-A40A-FAF4602EBA92}</Project>
+      <Name>MultiStackTest</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\Polinom\Polinom.vcxproj">
+      <Project>{0BF76515-EF3D-3385-916E-235F4A557B4D}</Project>
+      <Name>Polinom</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\PolinomLib\PolinomLib.vcxproj">
+      <Project>{CF8EA092-76FB-3466-A400-B1CBA6EE7F25}</Project>
+      <Name>PolinomLib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\PolinomTest\PolinomTest.vcxproj">
+      <Project>{C542D56E-40CB-30EF-885B-E08F03A72198}</Project>
+      <Name>PolinomTest</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\Polish\Polish.vcxproj">
+      <Project>{1E9974B9-ED89-382F-8E6D-B6D863FD54D4}</Project>
+      <Name>Polish</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\PolishLib\PolishLib.vcxproj">
+      <Project>{51C53E05-689B-3269-A65C-AB6CAEAEEE3E}</Project>
+      <Name>PolishLib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\PolishTest\PolishTest.vcxproj">
+      <Project>{2368BD4C-1D5A-30B4-82A6-EA1A957ECD4C}</Project>
+      <Name>PolishTest</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\Queue\Queue.vcxproj">
+      <Project>{2DC1225B-C07B-382B-9B90-EB9F4B32111E}</Project>
+      <Name>Queue</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\QueueLib\QueueLib.vcxproj">
+      <Project>{985B3D7D-272A-32A6-BC0C-921FB8ECC4D4}</Project>
+      <Name>QueueLib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\QueueTest\QueueTest.vcxproj">
+      <Project>{59BD44EC-2EBB-3140-8A39-CBB8EEEB5714}</Project>
+      <Name>QueueTest</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\Stack\Stack.vcxproj">
+      <Project>{0BC5C2D0-421B-3550-BA0D-814369BB2767}</Project>
+      <Name>Stack</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\StackLib\StackLib.vcxproj">
+      <Project>{B58F16DB-2677-3101-B8B7-51102B6F8165}</Project>
+      <Name>StackLib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\StackList\StackList.vcxproj">
+      <Project>{869FC6AE-7098-3C42-AFA7-D524B12AC82F}</Project>
+      <Name>StackList</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\StackListLib\StackListLib.vcxproj">
+      <Project>{D29DDD66-3558-3493-8115-AC62C741611E}</Project>
+      <Name>StackListLib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\StackListTest\StackListTest.vcxproj">
+      <Project>{558D05A1-9FF9-3A7F-95F3-4373A96FF271}</Project>
+      <Name>StackListTest</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\StackTest\StackTest.vcxproj">
+      <Project>{52E7E249-7670-34AC-B43A-A6ADBAD7D66F}</Project>
+      <Name>StackTest</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\Vector\Vector.vcxproj">
+      <Project>{FB5ECD9B-F017-3353-8438-8DD9B9023F9E}</Project>
+      <Name>Vector</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\VectorLib\VectorLib.vcxproj">
+      <Project>{14596336-87DF-31A8-AEE1-50B4394337F6}</Project>
+      <Name>VectorLib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\VectorTest\VectorTest.vcxproj">
+      <Project>{938C1DDC-578A-337E-8F96-9D7E14647875}</Project>
+      <Name>VectorTest</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Admin\Desktop\LABS\All-labs\gtest\gtest.vcxproj">
+      <Project>{F88771A4-FEAD-3E73-BF88-B3C965225815}</Project>
+      <Name>gtest</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

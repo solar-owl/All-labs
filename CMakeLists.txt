@@ -3,6 +3,8 @@
 set(PROJECT_NAME All-labs) #Создаем обычную локальную переменную с именем проекта
 project(${PROJECT_NAME}) # Название проекта
 
+set(ExceptionLib ExceptionLib) #Переменная с именем библиотеки
+
 set(Vector Vector) #Переменная с именем библиотеки
 set(VectorLib VectorLib) #Переменная с именем библиотеки
 set(VectorTest VectorTest) #Переменная с именем библиотеки
@@ -50,6 +52,9 @@ add_subdirectory(Vector)
 add_subdirectory(VectorLib)
 add_subdirectory(VectorTest)
 add_subdirectory(gtest)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ExceptionLib)
+add_subdirectory(ExceptionLib)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/StackLib)
 add_subdirectory(Stack)

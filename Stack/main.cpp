@@ -1,22 +1,20 @@
 #include <iostream>
-#include "Matrix.h"
+#include "Stack.h"
 
+using namespace std;
 
-int main(int argc, char* argv[])
-{
-  setlocale(LC_ALL, "");
-  TMatrix<int> a(5), b(5), c(5);
-  int i, j;
-  cout << "Тестирование программ поддержки треугольных матриц" << endl;
-  for (i = 0; i < 5; i++)
-    for (j = i; j < 5; j++)
-    {
-      a[i][j] = i * 10 + j;
-      b[i][j] = (i * 10 + j) * 100;
-    }
-  c = a + b;
-  cout << "Matrix a = " << endl << a << endl;
-  cout << "Matrix b = " << endl << b << endl;
-  cout << "Matrix c = a + b" << endl << c << endl;
+int  main() {
+  TStack<int> St(2);
+  if (St.IsEmpty())
+  {
+    St.Put(5);
+    St.Put(6);
+  }
+  if (St.IsFull())
+  {
+    cout << "2:" << St.Get() << endl;
+    cout << "1:" << St.Get() << endl;
+  }
+
   return 0;
 }
