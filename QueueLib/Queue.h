@@ -26,6 +26,7 @@ TQueue<T>::TQueue(int n) : TStack<T>(n)
 {
       start = 0;
       count = 0;
+      TStack<T>::top = 0;
 }
 
 template <class T>
