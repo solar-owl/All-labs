@@ -21,8 +21,7 @@ public:
   int GetSize();// кол-во элементов в стеке
   bool IsFull(); // проверка на полноту
   bool IsEmpty(); // проверка на пустоту
-  void Put(const int Val); // добавить значение
-                  //void Put(T el); // положить элемент
+  void Put(const int el); // добавить значение
   T Get(); // получить элемент
 };
 
@@ -30,17 +29,17 @@ template<class T>
 TStack<T>::TStack(int S)
 {
   if (S < 0)
-    throw TExсeption(DataErr);
+    throw TException(DataErr);
   else if (S == 0)
   {
     size = 0;
-    top = 0;
+    top = -1;
     Elem = NULL;
   }
   else
   {
     size = S;
-    top = 0;
+    top = -1;
     Elem = new T[S];
     for (int i = 0; i < size; i++)
       Elem[i] = 0;
@@ -81,7 +80,7 @@ int TStack<T>::GetSize()
 template<class T>
 bool TStack<T>::IsFull()
 {
-  if (top >= size)
+  if (top >= size-1)
     return 1;
   return 0;
 }
@@ -89,38 +88,26 @@ bool TStack<T>::IsFull()
 template<class T>
 bool TStack<T>::IsEmpty()
 {
-  if (top == 0)
+  if (top == -1)
     return 1;
   return 0;
 }
 
-/*template<class T>
-void TStack<T>::Put(T el)
+template<class T>
+void TStack<T>::Put(const int el)
 {
   if (IsFull())
     throw TException(DataFull);
-  else
-  {
-    Elem[++top] = el;
-  }
-}*/
-template<class ValType>
-void TStack<ValType>::Put(const int Val)
-{
-  if (IsFull())
-    throw TExeption(DataFull);
-  Elem[++top] = Val;
+  Elem[++top] = el;
 }
+
 
 template<class T>
 T TStack<T>::Get()
 {
   if (IsEmpty())
     throw TException(DataEmpty);
-  else
-  {
-    return Elem[top--];
-  }
+  return Elem[top--];
 }
 
 #endif

@@ -1,5 +1,7 @@
 #include <iostream>
 #include"Queue.h"
+#include "Exception.h"
+
 using namespace std;
 
 int main()

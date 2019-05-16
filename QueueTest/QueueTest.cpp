@@ -1,4 +1,5 @@
 #include "Queue.h"
+#include "Exception.h"
 #include <gtest.h>
 
 TEST(Queue, throws_when_create_queue_with_negative_size)
@@ -68,7 +69,7 @@ TEST(Queue, check_circular_put_in_queue)
 }
 
 
-TEST(Queue, Poryadok_vivoda)
+TEST(Queue, order_output)
 {
   TQueue<int> S(3);
   S.Put(1), S.Put(2), S.Put(3);

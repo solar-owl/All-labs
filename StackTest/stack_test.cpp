@@ -1,6 +1,7 @@
 #include <gtest.h>
 #include <iostream>
 #include "Stack.h"
+#include "Exception.h"
 
 TEST(Stack, throws_when_create_stack_with_negative_size)
 {
@@ -53,7 +54,7 @@ TEST(Stack, throws_when_from_empty_stack_get_elem)
   ASSERT_ANY_THROW(S.Get());
 }
 
-TEST(Stack, Poryadok_vivoda)
+TEST(Stack, order_output)
 {
   TStack <int> S(3);
   S.Put(1), S.Put(2), S.Put(3);

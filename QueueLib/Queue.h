@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
+#include <locale.h>
 #include "Stack.h"
+#include "Exception.h"
 
 using namespace std;
 
@@ -12,7 +14,7 @@ protected:
 public:
   TQueue(int n = 0);
   TQueue(TQueue <T> &Q);
-
+  T Top();
   void Put(T el); //положить в конец
   T Get(); //взять первый элемент
   bool IsFull(); //проверка на полноту
@@ -33,9 +35,15 @@ TQueue<T>::TQueue(TQueue<T> &Q) : TStack<T>(Q) {
 }
 
 template <class T>
+inline T TQueue<T>::Top()
+{
+  return TStack<T>::Elem[start];
+}
+
+template <class T>
 void TQueue<T>::Put(T el) {
   if (IsFull())
-    throw Exception(DataFull);
+    throw TException(DataFull);
   else {
     TStack<T>::Elem[start] = el;
     start = (start + 1) % TStack<T>::size;
@@ -46,7 +54,7 @@ void TQueue<T>::Put(T el) {
 template <class T>
 T TQueue<T>::Get() {
   if (IsEmpty())
-    throw Exception(DataEmpty);
+    throw TException(DataEmpty);
   else {
     T tmp = TStack<T>::Elem[TStack<T>::top];
     TStack<T>::top = (TStack<T>::top + 1) % TStack<T>::size;

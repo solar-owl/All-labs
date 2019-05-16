@@ -46,15 +46,15 @@ if(NOT CMAKE_BUILD_TYPE) # проверка имеющихся у компиля
   set(CMAKE_BUILD_TYPE Release) #Если нет то устанавливаем Release
 endif()
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ExceptionLib)
+add_subdirectory(ExceptionLib)
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/VectorLib ${CMAKE_CURRENT_SOURCE_DIR}/gtest)
 
 add_subdirectory(Vector)
 add_subdirectory(VectorLib)
 add_subdirectory(VectorTest)
 add_subdirectory(gtest)
-
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ExceptionLib)
-add_subdirectory(ExceptionLib)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/StackLib)
 add_subdirectory(Stack)
