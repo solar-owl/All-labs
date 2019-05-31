@@ -10,7 +10,7 @@ TEST(ArrList, can_create_list_with_specified_size)
 {
   ASSERT_NO_THROW(TArrList <int> L(3));
 }
-
+/*
 TEST(ArrList, can_create_copy_empty_list)
 {
   TArrList <int> L(1);
@@ -25,7 +25,7 @@ TEST(ArrList, can_create_copy_not_empty_list)
 
   ASSERT_NO_THROW(TArrList <int> L2(L));
 }
-
+*/
 TEST(ArrList, throws_when_create_list_with_size_eq_zero)
 {
   ASSERT_ANY_THROW(TArrList <int> L(0));
