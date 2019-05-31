@@ -14,7 +14,7 @@ protected:
   int top; // вершина стека 
   int size;//размер стека
 public:
-  TStack(int S = 0);
+  TStack(int S = 10);
   TStack(TStack<T>&m);
   ~TStack();
 
