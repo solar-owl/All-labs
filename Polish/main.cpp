@@ -1,18 +1,20 @@
+﻿#include "Exception.h"
 #include "Polish.h"
-#include "Exception.h"
+#include <iostream>
 
-int  main()
+using namespace std;
+
+int main()
 {
-
-    cout << "Enter your math expression: ";
-    TString s;
-    cin >> s;
-    cout << s << " ~ ";
-    TQueue<char> B;
-    B = ConvertToPol(s);
-    while (!B.IsEmpty())
-      cout << B.Get();
-    cout << " = " << Rez(B) << endl;
-  
-  return 0;
+  setlocale(LC_ALL, "");
+  TInfixToPolish ExpConvertor;
+  char Expression[80], *PolishExpression;
+  cout << "Перевод арифм. выражения из инфиксной в постфиксную запись" << endl;
+  cout << "Введите выражение" << endl;
+  cin >> Expression;
+  PolishExpression = ExpConvertor.ConvertToPolish(Expression, strlen(Expression));
+  cout << "Выражение в инфиксной записи - " << Expression << endl;
+  cout << "Выражение в обратной польской записи - " << PolishExpression << endl;
+  cout << "Результат - " << ExpConvertor.Calculate(PolishExpression, strlen(Expression)) << endl;
+  delete PolishExpression;
 }

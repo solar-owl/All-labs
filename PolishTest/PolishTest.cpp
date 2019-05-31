@@ -1,259 +1,95 @@
-#include "gtest.h"
-#include "Polish.h"
+#include <gtest.h>
+#include <Polish.h>
 
-TEST(Polish, can_get_priority)
+
+TEST(TInfixToPolish, can_convert_simple_array_char)
 {
+  char* exp = (char*)"2+2=";
+  char* expect = (char*)"2 2 +=";
+  char* res = TInfixToPolish().ConvertToPolish(exp, strlen(exp));
+  bool flag = 1;
+  for (int i = 0; i < strlen(expect); i++)
+  {
+    flag *= (res[i] == expect[i]);
+  }
+  delete res;
 
-  ASSERT_EQ(1, GetPrt(')'));
-  ASSERT_EQ(1, GetPrt('('));
-  ASSERT_EQ(2, GetPrt('+'));
-  ASSERT_EQ(2, GetPrt('-'));
-  ASSERT_EQ(3, GetPrt('*'));
-  ASSERT_EQ(3, GetPrt('/'));
-  ASSERT_ANY_THROW(GetPrt('!'));
+  ASSERT_EQ(1, flag);
 }
 
-TEST(Polish, can_check_is_op)
+TEST(TInfixToPolish, can_calculate_simple_array_char)
 {
-  ASSERT_EQ(1, IsOp(')'));
-  ASSERT_EQ(1, IsOp('('));
-  ASSERT_EQ(1, IsOp('+'));
-  ASSERT_EQ(1, IsOp('-'));
-  ASSERT_EQ(1, IsOp('*'));
-  ASSERT_EQ(1, IsOp('/'));
-  ASSERT_EQ(false, IsOp('4'));
-  ASSERT_EQ(false, IsOp('!'));
+  char* exp = (char*)"2+2=";
+  char* str = TInfixToPolish().ConvertToPolish(exp, strlen(exp));
+  int res = TInfixToPolish().Calculate(str, strlen(str));
+  ASSERT_EQ(4, res);
 }
 
-TEST(Polish, can_convert_to_pol)
+TEST(TInfixToPolish, can_convert_tree_digit_numbers_array_char)
 {
-  char s[] = "9+8";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-  ASSERT_EQ(B.Get(), '[');
-  ASSERT_EQ(B.Get(), '9');
-  ASSERT_EQ(B.Get(), ']');
-  ASSERT_EQ(B.Get(), '[');
-  ASSERT_EQ(B.Get(), '8');
-  ASSERT_EQ(B.Get(), ']');
-  ASSERT_EQ(B.Get(), '+');
+  char* exp = (char*)"365-221=";
+  char* expect = (char*)"365 221 -=";
+  char* res = TInfixToPolish().ConvertToPolish(exp, strlen(exp));
+  bool flag = 1;
+  for (int i = 0; i < strlen(expect); i++)
+  {
+    flag *= (res[i] == expect[i]);
+  }
+  delete res;
+
+  ASSERT_EQ(1, flag);
 }
 
-TEST(Polish, can_add)
+TEST(TInfixToPolish, can_calculate_tree_digit_numbers_array_char)
 {
-  char s[] = "9+8";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-  EXPECT_EQ(17, Rez(B));
+  char* exp = (char*)"365-221=";
+  char* str = TInfixToPolish().ConvertToPolish(exp, strlen(exp));
+  int res = TInfixToPolish().Calculate(str, strlen(str));
+  ASSERT_EQ(144, res);
 }
 
-TEST(Polish, throw_when_math_expression_have_is_uncurrent_symbol)
+TEST(TInfixToPolish, can_convert_many_operators_array_char)
 {
-  char s[] = "9!8";
-  TString A(s);
-  TQueue<char> B;
-  ASSERT_ANY_THROW(ConvertToPol(A));
+  char* exp = (char*)"1+2*3=";
+  char* expect = (char*)"1 2 3 *+=";
+  char* res = TInfixToPolish().ConvertToPolish(exp, strlen(exp));
+  bool flag = 1;
+  for (int i = 0; i < strlen(expect); i++)
+  {
+    flag *= (res[i] == expect[i]);
+  }
+  delete res;
+
+  ASSERT_EQ(1, flag);
 }
 
-TEST(Polish, throw_when_math_expression_have_is_uncurrent_kol_skobok)
+TEST(TInfixToPolish, can_calculate_many_operators_array_char)
 {
-  char s[] = "(9*8";
-  TString A(s);
-  TQueue<char> B;
-  ASSERT_ANY_THROW(ConvertToPol(A));
+  char* exp = (char*)"1+2*3=";
+  char* str = TInfixToPolish().ConvertToPolish(exp, strlen(exp));
+  int res = TInfixToPolish().Calculate(str, strlen(str));
+  ASSERT_EQ(7, res);
 }
 
-TEST(Polish, throw_when_math_expression_is_fuflo_in_begin)
+TEST(TInfixToPolish, can_convert_array_char_with_brackets)
 {
-  char s[] = "*9*8";
-  TString A(s);
-  TQueue<char> B;
-  ASSERT_ANY_THROW(ConvertToPol(A));
+  char* exp = (char*)"(1+2)*3=";
+  char* expect = (char*)"1 2 +3 *=";
+  char* res = TInfixToPolish().ConvertToPolish(exp, strlen(exp));
+  bool flag = 1;
+  for (int i = 0; i < strlen(expect); i++)
+  {
+    flag *= (res[i] == expect[i]);
+  }
+  delete res;
+
+  ASSERT_EQ(1, flag);
 }
 
-TEST(Polish, no_throw_when_queue_is_chiki_bamboni)
+TEST(TInfixToPolish, can_calculate_array_char_with_brackets)
 {
-  TQueue<char> B(7);
-  B.Put('[');
-  B.Put('9');
-  B.Put(']');
-  B.Put('[');
-  B.Put('8');
-  B.Put(']');
-  B.Put('+');
-  ASSERT_NO_THROW(Rez(B));
-  ASSERT_EQ(Rez(B), 17);
-}
-
-TEST(Polish, throw_when_queue_is_fuflo_in_begin)
-{
-  TQueue<char> B(7);
-  B.Put('+');
-  B.Put('[');
-  B.Put('9');
-  B.Put(']');
-  B.Put('[');
-  B.Put('8');
-  B.Put(']');
-  ASSERT_ANY_THROW(Rez(B));
-}
-
-TEST(Polish, throw_when_queue_is_fuflo_in_begin_2)
-{
-  TQueue<char> B(7);
-  B.Put('[');
-  B.Put('9');
-  B.Put(']');
-  B.Put('*');
-  B.Put('[');
-  B.Put('8');
-  B.Put(']');
-  ASSERT_ANY_THROW(Rez(B));
-}
-
-TEST(Polish, throw_when_queue_is_fuflo_1)
-{
-  TQueue<char> B(10);
-  B.Put('[');
-  B.Put('9');
-  B.Put(']');
-
-  B.Put('[');
-  B.Put('9');
-  B.Put(']');
-
-  B.Put('+');
-
-  B.Put('[');
-  B.Put('4');
-  B.Put(']');
-
-  ASSERT_ANY_THROW(Rez(B));
-}
-
-TEST(Polish, throw_when_queue_is_fuflo)
-{
-  TQueue<char> B(7);
-  B.Put('[');
-  B.Put('9');
-  B.Put(']');
-
-  B.Put('[');
-  B.Put('9');
-  B.Put(']');
-
-  B.Put('&');
-
-  ASSERT_ANY_THROW(Rez(B));
-}
-
-TEST(Polish, can_add_two_digit_number)
-{
-  char s[] = "43+57";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-
-  EXPECT_EQ(100, Rez(B));
-}
-
-TEST(Polish, can_subtract)
-{
-  char s[] = "9-8";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-
-  EXPECT_EQ(1, Rez(B));
-}
-
-TEST(Polish, can_multiplication)
-{
-  char s[] = "9*8";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-
-  EXPECT_EQ(72, Rez(B));
-}
-
-TEST(Polish, can_multiplication_3_param)
-{
-  char s[] = "9*8*2";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-
-  EXPECT_EQ(144, Rez(B));
-}
-
-TEST(Polish, can_multiplication_and_add_whith_hooks)
-{
-  char s[] = "(9+8)*2";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-  EXPECT_EQ(34, Rez(B));
-}
-
-TEST(Polish, can_multiplication_and_add_whithout_hooks)
-{
-  char s[] = "9+8*2";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-  Rez(B);
-  EXPECT_EQ(25, Rez(B));
-}
-
-TEST(Polish, can_split)
-{
-  char s[] = "8/2";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-
-  EXPECT_EQ(4, Rez(B));
-}
-
-TEST(Polish, can_multi_1)
-{
-  char s[] = "(43+57)*43";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-
-  EXPECT_EQ(4300, Rez(B));
-}
-
-TEST(Polish, can_multi_2)
-{
-  char s[] = "(43+57)/20";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-
-  EXPECT_EQ(5, Rez(B));
-}
-
-TEST(Polish, can_multi_3)
-{
-  char s[] = "(43+57)/(20+5)";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-
-  EXPECT_EQ(4, Rez(B));
-}
-
-TEST(Polish, can_multi_with_negative_first_number)
-{
-  char s[] = "-5+(43+57)/20";
-  TString A(s);
-  TQueue<char> B;
-  B = ConvertToPol(A);
-
-  EXPECT_EQ(0, Rez(B));
+  char* exp = (char*)"(1+2)*3=";
+  char* str = TInfixToPolish().ConvertToPolish(exp, strlen(exp));
+  int res = TInfixToPolish().Calculate(str, strlen(str));
+  ASSERT_EQ(9, res);
 }

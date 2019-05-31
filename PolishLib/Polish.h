@@ -1,8 +1,20 @@
-#pragma once
-#include "Queue.h"
-#include "Stroka.h"
+#ifndef __POLISH_H
+#define __POLISH_H
+#include <Exception.h>
+#include<iostream>
+#include<cstdlib>
+#include<cstring>
+#include<StackList.h>
+#include<Stack.h>
 
-int GetPrt(const char op);
-bool IsOp(char a);
-TQueue<char> ConvertToPol(TString s);
-double Rez(TQueue<char> q);
+using namespace std;
+
+class TInfixToPolish {
+protected:
+  int GetOperationPrt(char op); // получить приоритет операции
+  int IsOperation(char op); // проверка на знак операции
+public:
+  double Calculate(char* mem, int len);
+  char* ConvertToPolish(char * exp, int len); // проебразование к польской записи
+};
+#endif
