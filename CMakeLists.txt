@@ -41,6 +41,14 @@ set(Polish Polish) #Переменная с именем библиотеки
 set(PolishLib PolishLib) #Переменная с именем библиотеки
 set(PolishTest PolishTest) #Переменная с именем библиотеки
 
+set(TextTree TextTree) #Переменная с именем библиотеки
+set(TextTreeLib TextTreeLib) #Переменная с именем библиотеки
+set(TextTreeTest TextTreeTest) #Переменная с именем библиотеки
+
+set(Chart Chart) #Переменная с именем библиотеки
+set(ChartLib ChartLib) #Переменная с именем библиотеки
+set(ChartTest ChartTest) #Переменная с именем библиотеки
+
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configs" FORCE) #Создается переменная CMAKE_CONFIGURATION_TYPES со значением "Debug;Release" и меткой/разделом Configs, переменная сохраниется в специальном файле доступном из всех файлов,
 if(NOT CMAKE_BUILD_TYPE) # проверка имеющихся у компилятора вариантов сборки
   set(CMAKE_BUILD_TYPE Release) #Если нет то устанавливаем Release
@@ -95,6 +103,16 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/PolishLib)
 add_subdirectory(Polish)
 add_subdirectory(PolishLib)
 add_subdirectory(PolishTest)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/TextTreeLib)
+add_subdirectory(TextTree)
+add_subdirectory(TextTreeLib)
+add_subdirectory(TextTreeTest)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ChartLib)
+add_subdirectory(Chart)
+add_subdirectory(ChartLib)
+add_subdirectory(ChartTest)
 
 #file(GLOB hdrs "*.h*") #Добавляем в переменную hdrs все файлы с расширением .h
 #file(GLOB srcs "*.cpp") #Добавляем в переменную srcs все файлы с расширением .h
