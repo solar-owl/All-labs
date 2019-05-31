@@ -1,21 +1,20 @@
 #include <iostream>
-#include"Queue.h"
+#include "Stack.h"
 #include "Exception.h"
 
 using namespace std;
 
-int main()
-{
-  TQueue<int> Que(2);
-  if (Que.IsEmpty())
+int  main() {
+  TStack<int> St(2);
+  if (St.IsEmpty())
   {
-    Que.Put(1);
-    Que.Put(2);
+    St.Put(5);
+    St.Put(6);
   }
-  if (Que.IsFull())
+  if (St.IsFull())
   {
-    cout << "1:" << Que.Get() << endl;
-    cout << "2:" << Que.Get() << endl;
+    cout << "2:" << St.Get() << endl;
+    cout << "1:" << St.Get() << endl;
   }
 
   return 0;

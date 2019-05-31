@@ -23,6 +23,7 @@ public:
   bool IsEmpty(); // проверка на пустоту
   void Put(const int el); // добавить значение
   T Get(); // получить элемент
+  T Top();
 };
 
 template<class T>
@@ -108,6 +109,17 @@ T TStack<T>::Get()
   if (IsEmpty())
     throw TException(DataEmpty);
   return Elem[top--];
+}
+
+template<class T>
+T TStack<T>::Top()
+{
+  if (IsEmpty())
+    throw "Empty";
+  else
+  {
+    return Elem[top - 1];
+  }
 }
 
 #endif
