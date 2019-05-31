@@ -1,4 +1,5 @@
 #include "Polinom.h"
+#include "Exception.h"
 
 int main()
 {

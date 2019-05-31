@@ -1,4 +1,5 @@
 #include "Polish.h"
+#include "Exception.h"
 
 int  main()
 {

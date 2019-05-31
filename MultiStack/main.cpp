@@ -1,5 +1,7 @@
 #include "MultiStack.h"
 #include <ctime>
+#include "Exception.h"
+
 using namespace std;
 
 int main()
