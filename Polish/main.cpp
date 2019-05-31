@@ -10,7 +10,8 @@ int  main()
     cout << s << " ~ ";
     TQueue<char> B;
     B = ConvertToPol(s);
-    B.Print();
+    while (!B.IsEmpty())
+      cout << B.Get();
     cout << " = " << Rez(B) << endl;
   
   return 0;
