@@ -1,9 +1,9 @@
 #ifndef __CHARTPLEX_H
 #define __CHARTPLEX_H
-#include <TExeption.h>
+#include <Exception.h>
 #include <TChartPoint.h>
 #include <TChartLine.h>
-#include <TListStack.h>
+#include <StackList.h>
 #include <iostream>
 
 using namespace std;

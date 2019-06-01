@@ -10,6 +10,8 @@ class TList
 protected:
   TElem<T>* begin;            //указатель на элемент в начале списка
   int count;                  //кол-во элементов в списке 
+protected:
+  void DelLink(TElem<T>* pLink); // удаление звена
 public:
   TList();                    
   TList(TList<T> &L);         
@@ -24,6 +26,8 @@ public:
   bool IsFull();              //проверка на полноту 
   bool IsEmpty();             //проверка на пустоту 
   void Print();               //печать листа 
+  void Del(int num); // произвольное звено
+  void DelFirst(); // удалить первое звено 
 };
 
 template <class T>
@@ -31,6 +35,13 @@ TList<T>::TList()
 {
   begin = 0;
   count = 0;
+}
+
+template<class T>
+void TList<T>::DelLink(TElem<T>* pLink)
+{
+  if (pLink)
+    delete pLink;
 }
 
 template <class T>
@@ -247,4 +258,38 @@ inline void TList<T>::Print()
     cout << a->GetData() << " ";
   }
 
+}
+
+template<class T>
+void TList<T>::DelFirst()
+{
+  if (count)
+  {
+    Elem<T>* tmp = begin;
+    begin = begin->GetDate();
+    DelLink(tmp);
+    count--;
+  }
+}
+
+template<class T>
+void TList<T>::Del(int num)
+{
+  if ((num < 0) || (num >(count - 1)))
+    throw TException(DataErr);
+  if (num == 0)
+    DelFirst();
+  else
+  {
+    Elem<T>* pTemp = begin;
+    Elem<T>* pTempPrev;
+    for (int i = 0; i < (num - 1); i++)
+    {
+      pTempPrev = pTemp;
+      pTemp = pTemp->GetNext();
+    }
+    pTempPrev->SetNext(pTemp->GetNext());
+    DelLink(pTemp);
+  }
+  count--;
 }

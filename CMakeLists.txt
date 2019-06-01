@@ -49,6 +49,22 @@ set(Chart Chart) #Переменная с именем библиотеки
 set(ChartLib ChartLib) #Переменная с именем библиотеки
 set(ChartTest ChartTest) #Переменная с именем библиотеки
 
+set(Table Table) #Переменная с именем библиотеки
+set(TableLib TableLib) #Переменная с именем библиотеки
+set(TableTest TableTest) #Переменная с именем библиотеки
+
+set(SortTable SortTable) #Переменная с именем библиотеки
+set(SortTableLib SortTableLib) #Переменная с именем библиотеки
+set(SortTableTest SortTableTest) #Переменная с именем библиотеки
+
+set(TreeTable TreeTable) #Переменная с именем библиотеки
+set(TreeTableLib TreeTableLib) #Переменная с именем библиотеки
+set(TreeTableTest TreeTableTest) #Переменная с именем библиотеки
+
+set(HashTable HashTable) #Переменная с именем библиотеки
+set(HashTableLib HashTableLib) #Переменная с именем библиотеки
+set(HashTableTest HashTableTest) #Переменная с именем библиотеки
+
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configs" FORCE) #Создается переменная CMAKE_CONFIGURATION_TYPES со значением "Debug;Release" и меткой/разделом Configs, переменная сохраниется в специальном файле доступном из всех файлов,
 if(NOT CMAKE_BUILD_TYPE) # проверка имеющихся у компилятора вариантов сборки
   set(CMAKE_BUILD_TYPE Release) #Если нет то устанавливаем Release
@@ -113,6 +129,26 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ChartLib)
 add_subdirectory(Chart)
 add_subdirectory(ChartLib)
 add_subdirectory(ChartTest)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/TableLib)
+add_subdirectory(Table)
+add_subdirectory(TableLib)
+add_subdirectory(TableTest)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/SortTableLib)
+add_subdirectory(SortTable)
+add_subdirectory(SortTableLib)
+add_subdirectory(SortTableTest)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/TreeTableLib)
+add_subdirectory(TreeTable)
+add_subdirectory(TreeTableLib)
+add_subdirectory(TreeTableTest)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/HashTableLib)
+add_subdirectory(HashTable)
+add_subdirectory(HashTableLib)
+add_subdirectory(HashTableTest)
 
 #file(GLOB hdrs "*.h*") #Добавляем в переменную hdrs все файлы с расширением .h
 #file(GLOB srcs "*.cpp") #Добавляем в переменную srcs все файлы с расширением .h

@@ -1,8 +1,8 @@
 #ifndef __CHARTLINE_H
 #define __CHARTLINE_H
-#include <TExeption.h>
+#include <Exception.h>
 #include<TChartPoint.h>
-#include <TListStack.h>
+#include <StackList.h>
 #include <iostream>
 
 using namespace std;

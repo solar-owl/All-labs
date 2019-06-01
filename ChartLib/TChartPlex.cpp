@@ -65,8 +65,8 @@ TChartPlex & TChartPlex::operator+=(TChartLine & l)
   }
   else
   {
-    TListStack<TChartPoint*> st;
-    TListStack<TChartPlex*> parentSt;
+    TStackList<TChartPoint*> st;
+    TStackList<TChartPlex*> parentSt;
     st.Put(left);
     st.Put(right);
     parentSt.Put(this);

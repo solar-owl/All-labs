@@ -1,7 +1,7 @@
 #ifndef __CHART_H
 #define __CHART_H
-#include <TExeption.h>
-#include <TListStack.h>
+#include <Exception.h>
+#include <StackList.h>
 #include <iostream>
 
 using namespace std;
