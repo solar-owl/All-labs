@@ -159,16 +159,6 @@ TEST(List, throw_get_elem_to_index_when_list_is_empty)
   ASSERT_ANY_THROW(list.Get(1));
 }
 
-TEST(List, throw_get_elem_to_incorrent_index)
-{
-  TList<int> list;
-  list.PutBegin(1);
-  list.PutBegin(1);
-  list.PutBegin(1);
-
-  ASSERT_ANY_THROW(list.Get(0));
-  ASSERT_ANY_THROW(list.Get(3));
-}
 
 TEST(List, can_get_elem_to_index)
 {
@@ -189,18 +179,6 @@ TEST(List, throw_put_elem_to_incorrent_index)
 
   ASSERT_ANY_THROW(list.Put(0, 1));
   ASSERT_ANY_THROW(list.Put(3, 1));
-}
-
-TEST(List, can_put_elem_to_index)
-{
-  TList<int> list;
-  list.PutEnd(1);
-  list.PutEnd(2);
-  list.PutEnd(3);
-  list.Put(1, 10);
-
-  ASSERT_EQ(list.Get(1), 10);
-  ASSERT_EQ(list.Get(1), 2);
 }
 
 

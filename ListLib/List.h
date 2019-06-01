@@ -18,7 +18,7 @@ public:
   virtual ~TList();           
   int GetSize();              //получить кол-во элементов в листе
   void Put(int n, T elem);   //установть элемент на позицию n в списке
-  T Get(int n);              //получить элемент из списка
+  T Get(int n) const;              //получить элемент из списка
   void PutBegin(T A);         //положить в начало 
   void PutEnd(T A);           //положить в конец 
   T GetBegin();               //получить элемент в начале списка 
@@ -105,29 +105,14 @@ void TList<T>::Put(int n, T elem)
 }
 
 template<class T>
-T TList<T>::Get(int n)
+T TList<T>::Get(int n) const
 {
-  if (this->IsEmpty())
-    throw TException(DataEmpty);
-  if (n < 1 || n > count - 1)
+  if ((n < 0) || (n >(count - 1)))
     throw TException(DataErr);
-  else
-  {
-    int i = 0;
-    count--;
-    TElem<T>* a = begin;
-    TElem<T>* b = begin->GetNext();
-    while (i != n - 1)
-    {
-      a = b;
-      b = b->GetNext();
-      i++;
-    }
-    T temp = b->GetData();
-    a->SetNext(b->GetNext());
-    delete b;
-    return temp;
-  }
+  TElem<T>* pTemp = begin;
+  for (int i = 0; i < n; i++)
+    pTemp = pTemp->GetNext();
+  return pTemp->GetData();
 }
 
 template <class T>
