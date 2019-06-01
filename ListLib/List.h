@@ -250,7 +250,7 @@ void TList<T>::DelFirst()
 {
   if (count)
   {
-    Elem<T>* tmp = begin;
+    TElem<T>* tmp = begin;
     begin = begin->GetDate();
     DelLink(tmp);
     count--;
@@ -266,8 +266,8 @@ void TList<T>::Del(int num)
     DelFirst();
   else
   {
-    Elem<T>* pTemp = begin;
-    Elem<T>* pTempPrev;
+    TElem<T>* pTemp = begin;
+    TElem<T>* pTempPrev;
     for (int i = 0; i < (num - 1); i++)
     {
       pTempPrev = pTemp;
